@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("Arduino arduinooo 2");
+  res.send("Arduino arduinooo 3");
 });
 
 app.listen(port, () => {
