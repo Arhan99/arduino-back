@@ -16,16 +16,19 @@ const jsonDataGet = JSON.parse(dataDB);
 
 app.post("/users", (req, res) => {
   test = req.body;
-  res.status(201).json({ message: "User created successfully", data: test });
+  if (Number(test) > 10 && Number(test) < 50) {
+    res.status(201).json({ message: "User created successfully", data: test });
 
-  let curJsonFileDate = JSON.parse(fs.readFileSync('./db.json', 'utf-8'));
-  curJsonFileDate.push(test)
-  curJsonFileDate = JSON.stringify(curJsonFileDate);
+    let curJsonFileDate = JSON.parse(fs.readFileSync('./db.json', 'utf-8'));
+    curJsonFileDate.push(test)
+    curJsonFileDate = JSON.stringify(curJsonFileDate);
 
-  fs.writeFile('./db.json', curJsonFileDate, (err) => {
-    if (err) throw err;
-    console.log('Data saved to file');
-  });
+    fs.writeFile('./db.json', curJsonFileDate, (err) => {
+      if (err) throw err;
+      console.log('Data saved to file');
+    });
+  }
+
 });
 
 
