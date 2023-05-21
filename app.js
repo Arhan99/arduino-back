@@ -74,6 +74,8 @@ app.post("/editUsers", (req, res) => {
   // Путь к файлу, который нужно перезаписать
   const filePath = './auth.json';
   // Перезапись файла
-  fs.writeFileSync(filePath, jsonData);
-  res.send('Файл успешно перезаписан');
+  fs.writeFile("./auth.json", jsonData, err => {
+    if (err) throw err;
+    console.log("Data saved to file");
+  });
 });
