@@ -1,8 +1,10 @@
+require('dotenv').config({path: __dirname + '/.env'})
 const express = require("express");
 const fs = require("fs");
 const bodyParser = require("body-parser");
 const cors = require("cors"); // импорт cors middleware
 const app = express();
+const ChatGptController  = require('./controller/chatGpt.controller')
 
 const port = process.env.PORT || 3000;
 
@@ -56,3 +58,4 @@ app.post("/bulb", (req, res) => {
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
+app.post('/gpt', ChatGptController.askToChatGpt)
