@@ -43,7 +43,6 @@ app.get("/", (req, res) => {
 });
 
 // лампочка
-
 app.get("/bulb", (req, res) => {
   res.send({ bulbOn: !bulbOn });
 });
@@ -55,7 +54,20 @@ app.post("/bulb", (req, res) => {
   res.send({ bulbOn: !bulbOn });
 });
 
+
+// справочник
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
 app.post('/gpt', ChatGptController.askToChatGpt)
+
+// пользователи
+app.get("/getUsers", (req, res) => {
+  const getCurJsonFileDate = JSON.parse(fs.readFileSync("./auth.json", "utf-8"));
+  res.send(JSON.stringify(getCurJsonFileDate));
+});
+
+app.post("/editUsers", (req, res) => {
+  const getCurJsonFileDate = JSON.parse(fs.readFileSync("./auth.json", "utf-8"));
+  res.send(JSON.stringify(getCurJsonFileDate));
+});
