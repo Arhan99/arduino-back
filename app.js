@@ -68,6 +68,12 @@ app.get("/getUsers", (req, res) => {
 });
 
 app.post("/editUsers", (req, res) => {
-  const getCurJsonFileDate = JSON.parse(fs.readFileSync("./auth.json", "utf-8"));
-  res.send(JSON.stringify(getCurJsonFileDate));
+  const data = req.body; // Данные, полученные из POST-запроса
+  // Преобразование данных в формат JSON
+  const jsonData = JSON.stringify(data, null, 2);
+  // Путь к файлу, который нужно перезаписать
+  const filePath = './auth.json';
+  // Перезапись файла
+  fs.writeFileSync(filePath, jsonData);
+  res.send('Файл успешно перезаписан');
 });
