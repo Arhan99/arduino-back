@@ -17,7 +17,7 @@ const dataDB = fs.readFileSync("./db.json", "utf-8");
 // Преобразование содержимого в объект JavaScript
 const jsonDataGet = JSON.parse(dataDB);
 
-app.post("/users", (req, res) => {
+app.post("/temp", (req, res) => {
   test = req.body;
   res.status(201).json({ message: "User created successfully", data: test });
 
