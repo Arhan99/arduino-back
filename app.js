@@ -22,13 +22,9 @@ app.post("/temp", (req, res) => {
   res.status(201).json({ message: "User created successfully", data: test });
 
   let curJsonFileDate = JSON.parse(fs.readFileSync("./db.json", "utf-8"));
-  console.log(test.result, "1");
-  console.log(test.res, "2");
-  console.log(test.dataTemp, "3");
-  if (test.dataTemp > 10 && test.dataTemp < 50) {
-    console.log("тут я запушил");
-    curJsonFileDate.push(test);
-  }
+  console.log(test, "test");
+
+  curJsonFileDate.push(test);
   curJsonFileDate = JSON.stringify(curJsonFileDate);
 
   fs.writeFile("./db.json", curJsonFileDate, err => {
