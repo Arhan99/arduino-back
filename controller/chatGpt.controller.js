@@ -13,7 +13,7 @@ const askToChatGpt = async function (req, res) {
      * 2. Let's talk to chatGPT
      */
     await openAIInstance.createCompletion({
-        model: 'text-davinci-003',
+        model: 'gpt-3.5-turbo-0613',
         prompt: req.body.message,
         temperature: 0,
         max_tokens: 3000
@@ -27,7 +27,6 @@ const askToChatGpt = async function (req, res) {
             console.log('Error ', error)
         });
 }
-
 
 const _createOpenAIInstance = async () => {
     const conf = await new Configuration({
